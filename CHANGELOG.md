@@ -136,6 +136,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.5.0]
+
+### Changed
+
+- **Startup behavior change for self-hosters:** Docker containers now stop with a nonzero exit status if Prisma client generation or database migrations fail, instead of starting the app anyway. After upgrading, a container with a failed migration may stop or restart repeatedly. Inspect the Prisma error in the container logs, back up the database, repair the reported migration or connection issue, and restart the container. Startup will resume once preparation succeeds.
+
+### Fixed
+
+- Bundle the locked Prisma CLI and engines in self-hosted images so startup does not require registry or CDN access.
+- Google task completion timestamps now persist when completed tasks are imported or refreshed, and clear when tasks are reopened in Google.
+
 ## [1.3.0] 2025-03-25
 
 ### Added
